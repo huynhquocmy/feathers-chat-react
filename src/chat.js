@@ -8,7 +8,7 @@ class Chat extends Component {
     const text = input.value.trim();
 
     if(text) {
-      client.service('messages').create({ text }).then(() => {
+      client.service('chat-messages').create({ text }).then(() => {
         input.value = '';
       });
     }
@@ -23,13 +23,13 @@ class Chat extends Component {
 
   componentDidMount() {
     this.scrollToBottom = this.scrollToBottom.bind(this);
-    client.service('messages').on('created', this.scrollToBottom);
+    client.service('chat-messages').on('created', this.scrollToBottom);
     this.scrollToBottom();
   }
 
   componentWillUnmount() {
     // Clean up listeners
-    client.service('messages').removeListener('created', this.scrollToBottom);
+    client.service('chat-messages').removeListener('created', this.scrollToBottom);
   }
 
   render() {

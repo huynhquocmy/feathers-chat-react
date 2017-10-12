@@ -11,7 +11,7 @@ class Application extends Component {
   }
 
   componentDidMount() {
-    const messages = client.service('messages');
+    const messages = client.service('chat-messages');
     const users = client.service('users');
 
     // Try to authenticate with the JWT stored in localStorage
